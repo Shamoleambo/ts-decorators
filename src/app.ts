@@ -1,11 +1,11 @@
-function Logger(logString: string) {
-  return function (constructor: Function) {
-    console.log(logString)
-    console.log(constructor)
+function WithTemplate(template: string, hookId: string) {
+  return function (_: Function) {
+    const hookEl = document.getElementById(hookId)
+    if (hookEl) hookEl.innerHTML = template
   }
 }
 
-@Logger('LOG - PERSON')
+@WithTemplate('<h1>Test</h1>', 'app')
 class Person {
   name = 'Mano'
 
