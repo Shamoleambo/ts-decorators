@@ -25,6 +25,17 @@ function LoggerMethod(
   console.log(descriptor)
 }
 
+function LoggerParamether(
+  target: any,
+  name: string | Symbol,
+  position: number
+) {
+  console.log('\n\n LOGGER PARAMETHER DECORATOR')
+  console.log(target)
+  console.log(name)
+  console.log(position)
+}
+
 class Product {
   @Log
   title: string
@@ -42,7 +53,7 @@ class Product {
   }
 
   @LoggerMethod
-  getPriceWithTax(tax: number): number {
+  getPriceWithTax(@LoggerParamether tax: number): number {
     return this._price * (1 + tax)
   }
 }
