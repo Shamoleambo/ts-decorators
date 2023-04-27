@@ -25,6 +25,25 @@ class Person {
   }
 }
 
-const pers = new Person()
+// const pers = new Person()
 
-console.log(pers)
+// console.log(pers)
+
+class Product {
+  title: string
+  private _price: number
+
+  set price(value: number) {
+    if (value > 0) this._price = value
+    else throw new Error('Value must be grater than zero')
+  }
+
+  constructor(title: string, price: number) {
+    this.title = title
+    this._price = price
+  }
+
+  getPriceWithTax(tax: number): number {
+    return this._price * (1 + tax)
+  }
+}
