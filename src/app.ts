@@ -14,6 +14,17 @@ function LogAccessor(
   console.log(descriptor)
 }
 
+function LoggerMethod(
+  target: any,
+  name: string | Symbol,
+  descriptor: PropertyDescriptor
+) {
+  console.log('\n\n Method Logger Decorator')
+  console.log(target)
+  console.log(name)
+  console.log(descriptor)
+}
+
 class Product {
   @Log
   title: string
@@ -30,6 +41,7 @@ class Product {
     this._price = price
   }
 
+  @LoggerMethod
   getPriceWithTax(tax: number): number {
     return this._price * (1 + tax)
   }
